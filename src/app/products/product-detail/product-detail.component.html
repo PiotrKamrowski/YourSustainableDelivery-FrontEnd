@@ -1,0 +1,64 @@
+<app-header>
+  <p class="text-center" levels>SZCZEGÓŁY PRODUKTU {{product?.name}} </p>
+</app-header>
+
+
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-6">
+
+      <img src="../../../assets/img/{{product?.ean}}.gif" class="logo2">
+
+
+    </div>
+    <div class="col-sm-5">
+
+      <table [class]="" class="cs-table table table-striped">
+
+        <tbody>
+        <td>
+          <tr>EAN</tr>
+          <tr>NAZWA</tr>
+          <tr>CENA ZAKUPU</tr>
+          <tr>KATEGORIA</tr>
+          <tr>PAKOWANE PO</tr>
+
+        </td>
+        <td>
+          <tr>{{product?.ean}}</tr>
+          <tr>{{product?.name}}</tr>
+          <tr>{{product?.purchasePrice}}</tr>
+          <tr>{{product?.category}}</tr>
+          <tr>{{product?.inBox}}</tr>
+        </td>
+
+
+        </tbody>
+      </table>
+
+      <div [class]="col-sm-12">
+        <p class="productDescription">{{product?.description}}</p>
+        <button (click)="backToList()" class="btn btn-default float-right">Powrót</button>
+      </div>
+
+
+    </div>
+  </div>
+
+
+</div>
+
+
+    <div class="prodictDescription" class="col-sm-12">
+<p  *ngIf="inStore == false; else inStoreTrue" ><img src="../../../assets/block.png"> PRODUKT AKTUALNIE NIE ZNAJDUJE SIE W OFERCIE SKLEPU</p>
+      <button *ngIf="inStore== false" (click)="do()" class="btn btn-default float-left">Dodaj do oferty Twojego Sklepu</button>
+    </div>
+
+
+<ng-template #inStoreTrue>
+  <div>
+    <p><img src="../../../assets/ok.png"> PRODUKT AKTUALNIE ZNAJDUJE SIĘ W OFERCIE SKLEPU</p>
+  </div>
+</ng-template>

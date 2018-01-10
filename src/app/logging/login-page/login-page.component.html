@@ -1,0 +1,42 @@
+<app-header>
+  <p class="text-center" levels>Logowanie</p>
+
+
+</app-header>
+
+
+<div class="col-sm-1">
+
+
+
+
+    <div class="row form-group">
+<div class="row">
+  <div class="col-sm-12">
+    <form [formGroup]="smallUser">
+      <p>{{validateError}}</p>
+      <label>LOGIN</label>
+      <input  formControlName="login" type="password" class="form-control" placeholder="hasło">
+      <p *ngIf="!smallUser.get('login').valid && smallUser.get('login').dirty" class="error">Pole wymagane</p>
+      <label>HASŁO</label>
+      <input formControlName="password" type="password" class="form-control" placeholder="hasło">
+      <p *ngIf="!smallUser.get('password').valid && smallUser.get('password').dirty" class="error">Pole wymagane</p>
+
+    <button [disabled]="smallUser.invalid" (click)="send()" type="submit" class="btn btn-primary float-left">Zaloguj</button>
+
+
+
+
+
+
+
+  </form>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<div> <pre>{{smallUser.value | json}}</pre>
+ </div>

@@ -1,0 +1,67 @@
+<app-header>
+  <p class="text-center" levels>LISTA PRODUKTÓW W TWOIM SKLEPIE</p>
+</app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <button class="btn-primary"  (click)="backAll()">Wszystkie</button>
+      <button class="btn-primary"  (click)="loadProductsinStoreByCategory('ACCESORIES')">AKCESORIA</button>
+      <button class="btn-primary"  (click)="loadProductsinStoreByCategory('DRINKS')">NAPOJE</button>
+      <button class="btn-primary"  (click)="loadProductsinStoreByCategory('FOODS')">ŻYWNOŚĆ</button>
+      <button class="btn-primary"  (click)="loadProductsinStoreByCategory('BIGHOUSEHOLDGOODS')">AGD</button>
+      <button class="btn-primary"  (click)="loadProductsinStoreByCategory('RTV')">RTV</button>
+      <button class="btn-primary"  (click)="loadProductsinStoreByCategory('SMALLELECTRONICS')">MAŁE AGD</button>
+      <button class="btn-primary"  (click)="loadProductsinStoreByCategory('COMPUTERS')">KOMPUTERY</button>
+
+
+
+      <table *ngIf="productsinStore && productsinStore.length > 0; else noProductList" class="cs-table table table-striped">
+        <thead>
+        <tr>
+          <th>ZABLOKOWANY</th>
+          <th>EAN</th>
+          <th>NAZWA</th>
+          <th>KOSZT ZAKUPU</th>
+          <th>KATEGORIA</th>
+          <th>OPAKOWANIE</th>
+          <th>CENA</th>
+          <th>ZAPAS</th>
+          <th>MINIMUM EKSPOZYCJI</th>
+          <th>ZAMOWIENIA</th>
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        <tr  *ngFor="let productInStore of productsinStore;let i = index" (click)="goToCarDetails(car)" class="row-car" >
+          <td *ngIf="productInStore.block == false; else blockProduct" ><img src="../../../assets/ok.png"></td>
+          <td >{{productInStore.id_item}}</td>
+          <td>{{productInStore.productDetail.name}}</td>
+          <td >{{productInStore.productDetail.purchasePrice}}</td>
+          <td>{{productInStore.productDetail.category}}</td>
+          <td>{{productInStore.productDetail.inBox}}</td>
+          <td >{{productInStore.price}}</td>
+          <td >{{productInStore.quanity}}</td>
+          <td >{{productInStore.minSupply}}</td>
+          <td >{{productInStore.inOrders}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #blockProduct>
+  <div>
+    <img src="../../../assets/block.png">
+  </div>
+</ng-template>
+
+<ng-template #noProductList>
+  <div class="no-data">
+    <p>no data</p>
+  </div>
+</ng-template>
+

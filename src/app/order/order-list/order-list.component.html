@@ -1,0 +1,51 @@
+<app-header>
+
+  <p class="text-center" levels>LISTA ZAMÓWIEŃ</p>
+
+</app-header>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <p>SORTUJ PO</p><button class="btn-primary"  (click)="sortByQuanity(0)">DATA ROSNĄCO</button>
+      <button class="btn-primary"  (click)="sortByQuanity(1)">AKCESORIA</button>
+      <table *ngIf="orders && orders.length > 0; else noOrderList"  class="cs-table table table-striped">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>EAN</th>
+          <th>ILOŚĆ</th>
+          <th>DATA UTWORZENIA</th>
+          <th>DOSTARCZONY</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of orders ;let i = index" class="row-car" >
+          <td >{{order?.id}}</td>
+          <td>{{order?.id_item}}</td>
+          <td >{{order?.quanity}}</td>
+          <td>{{order?.date}}</td>
+          <td *ngIf="order.delivered == true; else blockProduct" ><img src="../../../assets/ok.png"></td>
+        </tr>
+        </tbody>
+      </table>
+
+
+      <ng-template #noOrderList>
+        <div class="no-data">
+          <p>no data</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #blockProduct>
+  <div>
+    <img src="../../../assets/block.png">
+  </div>
+</ng-template>
+

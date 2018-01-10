@@ -1,0 +1,50 @@
+<app-header>
+  <p class="text-center" levels>LISTA DOSTĘPNYCH PRODUKTÓW W SERWISIE</p>
+</app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <button class="btn-primary"  (click)="backAll()">Wszystkie</button>
+      <button class="btn-primary"  (click)="loadProductByCategory('ACCESORIES')">AKCESORIA</button>
+      <button class="btn-primary"  (click)="loadProductByCategory('DRINKS')">NAPOJE</button>
+      <button class="btn-primary"  (click)="loadProductByCategory('FOODS')">ŻYWNOŚĆ</button>
+      <button class="btn-primary"  (click)="loadProductByCategory('BIGHOUSEHOLDGOODS')">AGD</button>
+      <button class="btn-primary"  (click)="loadProductByCategory('RTV')">RTV</button>
+      <button class="btn-primary"  (click)="loadProductByCategory('SMALLELECTRONICS')">MAŁE AGD</button>
+      <button class="btn-primary"  (click)="hash()">KOMPUTERY</button>
+
+
+      <table *ngIf="products && products.length > 0; else noProductList"  class="cs-table table table-striped">
+        <thead>
+        <tr>
+          <th>EAN</th>
+          <th>NAZWA</th>
+          <th>KOSZT ZAKUPU</th>
+          <th>KATEGORIA</th>
+          <th>OPAKOWANIE</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of products;let i = index" class="row-car" [routerLink]="['/product', product.ean]"  >
+          <td >{{product?.ean}}</td>
+          <td>{{product?.name}}</td>
+          <td >{{product?.purchasePrice}}</td>
+          <td>{{product?.category}}</td>
+          <td>{{product?.inBox}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+
+      <ng-template #noProductList>
+        <div class="no-cars-info">
+          <p>no data</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+
+</div>

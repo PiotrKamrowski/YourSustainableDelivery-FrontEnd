@@ -1,0 +1,76 @@
+<app-header>
+  <p class="text-center" levels>RĘCZNE DODAWANIE PRODUKTU: {{product.name}}  </p>
+</app-header>
+
+
+<div class="add-container">
+      <div class="row">
+        <div class="col-sm-3">
+          <img src="../../../assets/img/{{product?.ean}}.gif" class="logo3">
+        </div>
+        <div class="col-sm-4">
+      <table [class]="" class="cs-table table table-striped">
+
+        <tbody>
+        <td>
+          <tr>EAN</tr>
+          <tr>NAZWA</tr>
+          <tr>CENA ZAKUPU</tr>
+          <tr>KATEGORIA</tr>
+          <tr>PAKOWANE PO</tr>
+
+        </td>
+        <td>
+          <tr>{{product?.ean}}</tr>
+          <tr>{{product?.name}}</tr>
+          <tr>{{product?.purchasePrice}}</tr>
+          <tr>{{product?.category}}</tr>
+          <tr>{{product?.inBox}}</tr>
+        </td>
+
+
+        </tbody>
+      </table>
+        </div>
+
+        <div class="col-sm-1">
+
+
+            <form [formGroup]="orderForm">
+
+                <div class="row form-group">
+
+                    <label>Ilość Zamawiana</label>
+                    <input formControlName="quanity" type="number" class="form-control" placeholder={{product.inBox}}>
+                  <p *ngIf="!orderForm.get('quanity').valid && orderForm.get('quanity').dirty" class="error">Ilość większa od 0</p>
+                  <p *ngIf="" class="error">ilość inna niż pakowana zawartość</p>
+                  </div>
+              <button [disabled]="orderForm.invalid" (click)="addOrder()" type="submit" class="btn btn-primary float-left">Zamów</button>
+
+
+
+
+
+
+
+            </form>
+
+
+
+
+
+      </div>
+<div class="col-sm 2">
+<p>Pamiętaj, że ilość zamawianego towaru, musi być wielokrotnością liczby pakowanych produktów, w przeciwnym
+wypadku system automatycznie zmieni ilość zamówienia</p>
+
+</div>
+
+
+</div>
+</div>
+<div> <pre>{{productInStoreForm.value | json}}</pre>
+  <pre>{{orderForm.value | json}}</pre></div>
+
+
+
