@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductsService} from '../../products/products.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SmallU} from '../../products/models/SmallU';
 import {Session} from 'selenium-webdriver';
 import {Router} from '@angular/router';
@@ -15,7 +15,6 @@ export class LoginPageComponent implements OnInit {
 
   smallUser: FormGroup;
   validateError: string;
-  responseSmallUser: SmallU;
 
 
   constructor(private productsService: ProductsService, private formBuilder: FormBuilder, private router: Router) {
@@ -26,10 +25,10 @@ export class LoginPageComponent implements OnInit {
 
     return this.formBuilder.group(
       {
-        login: '',
-        password: '',
+        login: ['', Validators.required],
+        password: ['', Validators.required],
         storeId: '',
-        isOk: '',
+        correctlogin: '',
       }
     )
 
@@ -52,22 +51,24 @@ export class LoginPageComponent implements OnInit {
       console.log('111111111');
       console.log(response);
 
-      if (response.isOk === true) {
+      if (response.correctlogin === true) {
 
-        sessionStorage.setItem('user', response.login);
+        console.log('isok');
 
+
+        sessionStorage.setItem('user', JSON.stringify(response));
+
+        console.log(sessionStorage.getItem('user'));
 
         this.router.navigate(['productsList']);
+
       } else {
 
         this.validateError = 'złe hasło lub login';
 
       }
 
-
     });
-
-
 
 
   }

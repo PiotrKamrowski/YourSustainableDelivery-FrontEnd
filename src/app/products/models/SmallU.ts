@@ -6,6 +6,6 @@ export interface SmallU {
 
  storeId: number ;
 
- isOk: boolean;
+  correctlogin: boolean;
 
 }

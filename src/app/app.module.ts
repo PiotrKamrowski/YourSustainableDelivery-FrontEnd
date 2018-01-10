@@ -15,6 +15,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {ProductRoutingModule} from './products/ProductsRoutingModule';
 import {OrderModule} from './order/order.module';
 import {LoggingModule} from './logging/logging.module';
+import {OnlyLoggedInUsersGuard} from './logging/OnlyLoggedInUsersGuard';
 
 
 
@@ -35,7 +36,7 @@ import {LoggingModule} from './logging/logging.module';
     OrderModule,
     LoggingModule
   ],
-  providers: [ProductsService],
+  providers: [ProductsService, OnlyLoggedInUsersGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

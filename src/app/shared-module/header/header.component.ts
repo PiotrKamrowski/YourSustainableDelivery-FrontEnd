@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {SmallU} from '../../products/models/SmallU';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.less']
 })
 export class HeaderComponent implements OnInit {
+  user: SmallU;
 
-  constructor() { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
+
+    this.user = JSON.parse(sessionStorage.getItem('user'));
+
+  }
+
+
+  logout() {
+    sessionStorage.clear();
+
+    this.router.navigate(['']);
+
   }
 
 }

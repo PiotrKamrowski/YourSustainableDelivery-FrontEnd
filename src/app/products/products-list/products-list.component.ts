@@ -23,6 +23,9 @@ export class ProductsListComponent implements OnInit {
 
   ngOnInit() {
     this.loadProductsList();
+
+    console.log(sessionStorage.getItem('user'));
+
   }
 
 

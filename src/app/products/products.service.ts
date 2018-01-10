@@ -78,4 +78,16 @@ export class ProductsService {
     return this.httpClient.get<Order[]>(this.urlOrder + `/${idStore}`);
   }
 
+
+  isLoggedIn(): boolean {
+
+    if (sessionStorage.getItem('user') != null) {
+
+      return true;
+    }
+
+    return false;
+  }
+
 }
+

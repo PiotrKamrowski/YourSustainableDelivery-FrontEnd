@@ -9,28 +9,28 @@
 
 
 
-
+<div class="container2">
     <div class="row form-group">
 <div class="row">
   <div class="col-sm-12">
-    <form [formGroup]="smallUser">
-      <p>{{validateError}}</p>
+    <form class="formown" [formGroup]="smallUser">
+      <p style="color: #790c29; font-size: 700px">{{validateError}}</p>
       <label>LOGIN</label>
-      <input  formControlName="login" type="password" class="form-control" placeholder="hasło">
+      <input  formControlName="login" type="text" class="form-control" placeholder="Login">
       <p *ngIf="!smallUser.get('login').valid && smallUser.get('login').dirty" class="error">Pole wymagane</p>
       <label>HASŁO</label>
       <input formControlName="password" type="password" class="form-control" placeholder="hasło">
       <p *ngIf="!smallUser.get('password').valid && smallUser.get('password').dirty" class="error">Pole wymagane</p>
 
     <button [disabled]="smallUser.invalid" (click)="send()" type="submit" class="btn btn-primary float-left">Zaloguj</button>
+    </form>
+  </div>
 
 
 
 
 
 
-
-  </form>
 </div>
     </div>
 </div>

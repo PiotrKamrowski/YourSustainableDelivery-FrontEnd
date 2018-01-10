@@ -2,6 +2,10 @@
   <div class="levels">
     <ng-content select="[levels]"></ng-content>
   </div>
+<div class="row">
+<div  class="col-sm-1">
+  <button [class]="logout" class="btn-primary "  (click)="logout()">Wyloguj {{user?.login}}</button>
+<p> </p></div> </div>
 
 
 
