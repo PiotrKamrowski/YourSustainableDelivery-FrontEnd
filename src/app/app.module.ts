@@ -20,6 +20,7 @@ import {StoreModule} from './store/store.module';
 import {ManagerModule} from './manager/manager.module';
 import {LoggingService} from './logging/logging.service';
 import {StoreService} from './store/store.service';
+import {OrderService} from './order/order.service';
 
 
 
@@ -42,7 +43,7 @@ import {StoreService} from './store/store.service';
     StoreModule,
     ManagerModule
   ],
-  providers: [ProductsService, LoggingService, StoreService, OnlyLoggedInUsersGuard],
+  providers: [ProductsService, LoggingService, StoreService, OrderService, OnlyLoggedInUsersGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

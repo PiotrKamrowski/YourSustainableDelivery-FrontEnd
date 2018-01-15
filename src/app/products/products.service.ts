@@ -13,43 +13,21 @@ import {User} from './models/User';
 export class ProductsService {
 
 
-  private urlStoreUsers = 'http://localhost:8080/users/getStoresUsers';
-  private urlStore = 'http://localhost:8080/store/yourStore';
-  private urlUsercheck = 'http://localhost:8080/users/check';
-  private urlOrder = 'http://localhost:8080/orders/ordersList';
+
   private urlProducts = 'http://localhost:8080/products/productsList';
   private urlInStore = 'http://localhost:8080/productsInStores/productInStore';
   private urlISInStore = 'http://localhost:8080/productsInStores/isInStore';
   private urlAddProductInStore = 'http://localhost:8080/products/addProductInStore';
-  private urlAddOrder = 'http://localhost:8080/orders/addOrder';
+
 
   constructor(private httpClient: HttpClient) {
   }
-
-
-
-
-
-
-  public getStore(idStore: number): Observable<Store> {
-
-    return this.httpClient.get<Store>(this.urlStore + `/${idStore}`);
-  }
-
-
-
 
 
   public getProductsList(): Observable<Product[]> {
 
 
     return this.httpClient.get<Product[]>(this.urlProducts);
-  }
-
-
-  public checkUser(data): Observable<SmallU> {
-
-    return this.httpClient.post<SmallU>(this.urlUsercheck, data);
   }
 
 
@@ -65,10 +43,7 @@ export class ProductsService {
   }
 
 
-  public addOrder(data): Observable<Order> {
 
-    return this.httpClient.post<Order>(this.urlAddOrder, data);
-  }
 
 
   public addProductInStore(data): Observable<ProductInStore> {
@@ -92,10 +67,7 @@ export class ProductsService {
   }
 
 
-  public getListOrders(idStore: number): Observable<Order[]> {
 
-    return this.httpClient.get<Order[]>(this.urlOrder + `/${idStore}`);
-  }
 
 
   isLoggedIn(): boolean {

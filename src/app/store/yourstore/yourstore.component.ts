@@ -5,6 +5,7 @@ import {SmallU} from '../../products/models/SmallU';
 import {User} from '../../products/models/User';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {LoggingService} from '../../logging/logging.service';
+import {StoreService} from '../store.service';
 
 @Component({
   selector: 'app-yourstore',
@@ -20,14 +21,14 @@ export class YourstoreComponent implements OnInit {
   options: Array<any>;
   mySelectValue: string;
 
-  constructor(private productService: ProductsService, private loggingService: LoggingService, private formBuilder: FormBuilder) {
+  constructor(private storeService: StoreService, private loggingService: LoggingService, private formBuilder: FormBuilder) {
   }
 
 
   loadStore() {
 
 
-    this.productService.getStore(this.user.storeId).subscribe((store) => {
+    this.storeService.getStore(this.user.storeId).subscribe((store) => {
 
       this.store = store;
     });

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Order} from '../../products/models/Order';
-import {ProductsService} from '../../products/products.service';
+import {OrderService} from '../order.service';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class OrderListComponent implements OnInit {
   orders: Order[];
 
 
-  constructor(private productService: ProductsService) {
+  constructor(private orderService: OrderService) {
   }
 
   ngOnInit() {
@@ -75,7 +75,7 @@ export class OrderListComponent implements OnInit {
 
   loadOrders() {
 
-    this.productService.getListOrders(1).subscribe((orders) => {
+    this.orderService.getListOrders(1).subscribe((orders) => {
 
       this.orders = orders;
 

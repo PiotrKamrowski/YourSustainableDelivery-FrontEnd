@@ -5,6 +5,7 @@ import {ActivatedRoute, Route, Router} from '@angular/router';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validator, Validators} from '@angular/forms';
 import {ProductInStore} from '../models/ProductInStore';
 import {ValidateOrder} from '../order.validator';
+import {OrderService} from '../../order/order.service';
 
 @Component({
   selector: 'app-product-addsingle',
@@ -20,7 +21,7 @@ export class ProductAddsingleComponent implements OnInit {
 
   ean = +this.route.snapshot.params['ean'];
 
-  constructor(private productService: ProductsService, private route: ActivatedRoute, private router: Router,
+  constructor(private productService: ProductsService, private orderService: OrderService, private route: ActivatedRoute, private router: Router,
               private formBuilder: FormBuilder) {
 
 
@@ -71,7 +72,7 @@ export class ProductAddsingleComponent implements OnInit {
   addOrder() {
 
     console.log('here');
-    this.productService.addOrder(this.orderForm.value).subscribe((resp1) => {
+    this.orderService.addOrder(this.orderForm.value).subscribe((resp1) => {
       console.log('here'  + resp1);
       this.productService.addProductInStore(this.productInStoreForm.value).subscribe((resp2) => {
 

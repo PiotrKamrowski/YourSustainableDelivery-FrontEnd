@@ -5,6 +5,7 @@ import {SmallU} from '../../products/models/SmallU';
 import {Session} from 'selenium-webdriver';
 import {Router} from '@angular/router';
 import {Md5} from 'ts-md5/dist/md5';
+import {LoggingService} from '../logging.service';
 
 @Component({
   selector: 'app-login-page',
@@ -18,7 +19,7 @@ export class LoginPageComponent implements OnInit {
   validateError: string;
 
 
-  constructor(private productsService: ProductsService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private loggingService: LoggingService, private formBuilder: FormBuilder, private router: Router) {
   }
 
 
@@ -48,7 +49,7 @@ export class LoginPageComponent implements OnInit {
 
   send() {
 
-    this.productsService.checkUser(this.smallUser.value).subscribe((response) => {
+    this.loggingService.checkUser(this.smallUser.value).subscribe((response) => {
 
 
       console.log('111111111');
