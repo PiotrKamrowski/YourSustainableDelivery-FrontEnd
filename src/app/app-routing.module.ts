@@ -6,6 +6,8 @@ import {OrderListComponent} from './order/order-list/order-list.component';
 import {RegisterUsersComponent} from './logging/register-users/register-users.component';
 import {LoginPageComponent} from './logging/login-page/login-page.component';
 import {OnlyLoggedInUsersGuard} from './logging/OnlyLoggedInUsersGuard';
+import {YourstoreComponent} from './store/yourstore/yourstore.component';
+import {EditUsersComponent} from './manager/edit-users/edit-users.component';
 
 
 const APP_ROUTES: Route[] = [
@@ -18,7 +20,11 @@ const APP_ROUTES: Route[] = [
     canActivate: [OnlyLoggedInUsersGuard]},
   {path: 'register', component: <any>RegisterUsersComponent,
     canActivate: [OnlyLoggedInUsersGuard]},
-  {path: 'login-page', component: <any>LoginPageComponent}
+  {path: 'login-page', component: <any>LoginPageComponent},
+  {path: 'yourstore', component: <any>YourstoreComponent,
+    canActivate: [OnlyLoggedInUsersGuard]},
+  {path: 'editusersStore', component: <any>EditUsersComponent,
+    canActivate: [OnlyLoggedInUsersGuard]},
   ];
 
 

@@ -5,11 +5,16 @@ import {HttpClient} from '@angular/common/http';
 import {ProductInStore} from './models/ProductInStore';
 import {Order} from './models/Order';
 import {SmallU} from './models/SmallU';
+import {Store} from './models/Store';
+import {User} from './models/User';
 
 
 @Injectable()
 export class ProductsService {
 
+
+  private urlStoreUsers = 'http://localhost:8080/users/getStoresUsers';
+  private urlStore = 'http://localhost:8080/store/yourStore';
   private urlUsercheck = 'http://localhost:8080/users/check';
   private urlOrder = 'http://localhost:8080/orders/ordersList';
   private urlProducts = 'http://localhost:8080/products/productsList';
@@ -20,6 +25,20 @@ export class ProductsService {
 
   constructor(private httpClient: HttpClient) {
   }
+
+
+
+
+
+
+  public getStore(idStore: number): Observable<Store> {
+
+    return this.httpClient.get<Store>(this.urlStore + `/${idStore}`);
+  }
+
+
+
+
 
   public getProductsList(): Observable<Product[]> {
 

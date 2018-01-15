@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SmallU} from '../../products/models/SmallU';
 import {Session} from 'selenium-webdriver';
 import {Router} from '@angular/router';
+import {Md5} from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-login-page',
@@ -40,6 +41,8 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
 
     this.smallUser = this.smallUserForm();
+
+
   }
 
 
@@ -59,6 +62,7 @@ export class LoginPageComponent implements OnInit {
         sessionStorage.setItem('user', JSON.stringify(response));
 
         console.log(sessionStorage.getItem('user'));
+        console.log(Md5.hashStr(response.password));
 
         this.router.navigate(['productsList']);
 

@@ -1,0 +1,119 @@
+<app-header>
+  <p class="text-center" levels>TWÓJ SKLEP  {{store?.name}}</p>
+  <p class="text-right"  content></p>
+</app-header>
+
+<div class="row">
+<div class="col-sm-4">
+<p>INFORMACJE O SKLEPIE   <button (click)="editStore()"  class="btn btn-primary float-right">Edytuj</button></p>
+  <table [class]="" class="cs-table table table-striped">
+
+    <tbody>
+    <td>
+      <tr>NAZWA</tr>
+      <tr>POWIERZCHNIA</tr>
+      <tr>ADRES</tr>
+      <tr>KOD POCZTOWY</tr>
+
+
+    </td>
+    <td>
+      <tr>{{store?.name}}</tr>
+      <tr>{{store?.area}}</tr>
+      <tr>{{store?.city}}, {{store?.street}} {{store?.number}}</tr>
+      <tr>{{store?.postalCode}}</tr>
+
+    </td>
+
+
+    </tbody>
+  </table>
+</div>
+  <div class="col-sm-6">
+    <p>AKTUALNIE WYBRANE GAMY PRODUKTÓW   <button (click)="editRange()"  class="btn btn-primary float-right">Edytuj</button></p>
+    <table class="text-center" [class]="" class="cs-table table table-striped">
+      <thead>
+      <tr>
+        <th>AKCESORIA</th>
+        <th>NAPOJE</th>
+        <th>JEDZENIE</th>
+        <th>AGD</th>
+        <th>RTV</th>
+        <th>MAŁE AGD</th>
+        <th>KOMPUTERy</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="row-car"  >
+        <td >{{store?.accesories}}</td>
+        <td >{{store?.drinks}}</td>
+        <td >{{store?.foods}}</td>
+        <td >{{store?.bigHouseHoldGoods}}</td>
+        <td >{{store?.rtv}}</td>
+        <td >{{store?.smallElectronics}}</td>
+        <td >{{store?.computers}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+
+  <p>UŻYTKOWNICY, AKTUALNIE SKLEP POSIADA: {{userList?.length}} UŻYTKOWNIKÓW   <button (click)="editUsers()"  class="btn btn-primary float-right">Zarządzaj</button></p>
+  <table [class]="" class="cs-table table table-striped">
+    <thead>
+    <tr>
+      <th>NAZWA</th>
+      <th>UPRAWNIENIA</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of userList;let i = index" class="row-car"  >
+      <td (click)="editUser(i)" >{{user?.login}}</td>
+      <td> {{user?.permission}}</td>
+
+
+
+
+
+
+    </tr>
+    </tbody>
+  </table>
+
+    <div class="col-sm-4">
+
+      <p>EDYCJA UŻYTKOWNIKA: {{userToEdit?.login}}   </p>
+      <table [class]="" class="cs-table table table-striped">
+        <thead>
+        <tr>
+          <th>LOGIN</th>
+          <th>IMIE</th>
+          <th>NAZWISKO</th>
+          <th>UPRAWNIENIA</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  class="row-car"  >
+          <td >{{userToEdit?.login}}</td>
+          <td> {{userToEdit?.userName}}</td>
+          <td> {{userToEdit?.userSurname}}</td>
+          <td> <ng-select
+            [multiple]="false"
+            [options]="options"
+            [(ngModel)]="mySelectValue">
+          </ng-select> <button button (click)="sendEditedUser(userToEdit?.login)"  class="btn btn-primary float-right">Edytuj</button></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+</div>
+<pre>{{mySelectValue}}{{userToEdit?.login}}</pre>
+</div>
+
+
+

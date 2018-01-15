@@ -1,0 +1,56 @@
+<app-header>
+
+  <p class="text-center" levels>LISTA ZAMÓWIEŃ</p>
+
+</app-header>
+
+
+<div class="row">
+  <div class="col-sm-3">
+
+    <p>UŻYTKOWNICY, AKTUALNIE SKLEP POSIADA: {{userList?.length}} UŻYTKOWNIKÓW   </p>
+    <table [class]="" class="cs-table table table-striped">
+      <thead>
+      <tr>
+        <th>NAZWA</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of userList;let i = index" class="row-car"  >
+        <td >{{user?.login}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="col-sm-6">
+    <p>Edytuj uprawnienia   </p>
+    <table class="text-center" [class]="" class="cs-table table table-striped">
+      <thead>
+      <tr>
+        <th>AKCESORIA</th>
+        <th>NAPOJE</th>
+        <th>JEDZENIE</th>
+        <th>AGD</th>
+        <th>RTV</th>
+        <th>MAŁE AGD</th>
+        <th>KOMPUTERy</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="row-car"  >
+        <td >{{store?.accesories}}</td>
+        <td >{{store?.drinks}}</td>
+        <td >{{store?.foods}}</td>
+        <td >{{store?.bigHouseHoldGoods}}</td>
+        <td >{{store?.rtv}}</td>
+        <td >{{store?.smallElectronics}}</td>
+        <td >{{store?.computers}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+
+
+</div>

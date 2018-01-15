@@ -16,6 +16,10 @@ import {ProductRoutingModule} from './products/ProductsRoutingModule';
 import {OrderModule} from './order/order.module';
 import {LoggingModule} from './logging/logging.module';
 import {OnlyLoggedInUsersGuard} from './logging/OnlyLoggedInUsersGuard';
+import {StoreModule} from './store/store.module';
+import {ManagerModule} from './manager/manager.module';
+import {LoggingService} from './logging/logging.service';
+import {StoreService} from './store/store.service';
 
 
 
@@ -34,9 +38,11 @@ import {OnlyLoggedInUsersGuard} from './logging/OnlyLoggedInUsersGuard';
     AppRoutingModule,
     ProductRoutingModule,
     OrderModule,
-    LoggingModule
+    LoggingModule,
+    StoreModule,
+    ManagerModule
   ],
-  providers: [ProductsService, OnlyLoggedInUsersGuard],
+  providers: [ProductsService, LoggingService, StoreService, OnlyLoggedInUsersGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
