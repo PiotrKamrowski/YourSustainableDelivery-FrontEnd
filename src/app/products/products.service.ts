@@ -13,7 +13,7 @@ import {User} from '../logging/models/User';
 export class ProductsService {
 
 
-
+  private urlProductInStore = 'http://localhost:8080/productsInStores/product'
   private urlProducts = 'http://localhost:8080/products/productsList';
   private urlInStore = 'http://localhost:8080/productsInStores/productInStore';
   private urlISInStore = 'http://localhost:8080/productsInStores/isInStore';
@@ -52,13 +52,13 @@ export class ProductsService {
   }
 
 
-  /*
-      public getProductInStore(id: number): Observable<ProductInStore> {
 
-        return this.httpClient.get<ProductInStore>()
+      public getProductInStore(storeid: number, id: number): Observable<ProductInStore> {
+
+        return this.httpClient.get<ProductInStore>(this.urlProductInStore + `/${storeid}` + `/${id}`);
 
 
-      }*/
+      }
 
 
   public isInStore(storeId: number, productId: number): Observable<boolean> {
