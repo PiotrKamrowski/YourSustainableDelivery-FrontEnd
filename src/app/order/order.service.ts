@@ -1,9 +1,9 @@
-import {SmallU} from '../products/models/SmallU';
+import {SmallU} from '../logging/models/SmallU';
 import {Observable} from 'rxjs/Observable';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from '../products/models/User';
-import {Order} from '../products/models/Order';
+import {User} from '../logging/models/User';
+import {Order} from './models/Order';
 
 @Injectable()
 export class OrderService {

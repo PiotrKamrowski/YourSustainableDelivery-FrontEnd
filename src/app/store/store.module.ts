@@ -5,6 +5,7 @@ import {SharedModule} from '../shared-module/shared-module';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SelectModule} from 'angular2-select';
+import {StoreResolve} from './store-resolve.service';
 
 @NgModule({
   imports: [
@@ -16,6 +17,8 @@ import {SelectModule} from 'angular2-select';
     SelectModule
   ],
   exports: [YourstoreComponent],
+
+  providers: [StoreResolve],
 
   declarations: [YourstoreComponent]
 })

@@ -14,7 +14,7 @@ export interface Store {
   smallHouseHoldGoods: number;
   rtv: number;
   smallElectronics: number;
-  computers: number;
+  computers: string;
 
 
 }

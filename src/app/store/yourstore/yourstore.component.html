@@ -1,36 +1,40 @@
 <app-header>
-  <p class="text-center" levels>TWÓJ SKLEP  {{store?.name}}</p>
-  <p class="text-right"  content></p>
+  <p class="text-center" levels>TWÓJ SKLEP {{store?.name}}</p>
+  <p class="text-right" content></p>
 </app-header>
 
 <div class="row">
-<div class="col-sm-4">
-<p>INFORMACJE O SKLEPIE   <button (click)="editStore()"  class="btn btn-primary float-right">Edytuj</button></p>
-  <table [class]="" class="cs-table table table-striped">
+  <div class="col-sm-4">
+    <p>INFORMACJE O SKLEPIE
+      <button (click)="editStore()" class="btn btn-primary float-right">Edytuj</button>
+    </p>
+    <table [class]="" class="cs-table table table-striped">
 
-    <tbody>
-    <td>
-      <tr>NAZWA</tr>
-      <tr>POWIERZCHNIA</tr>
-      <tr>ADRES</tr>
-      <tr>KOD POCZTOWY</tr>
-
-
-    </td>
-    <td>
-      <tr>{{store?.name}}</tr>
-      <tr>{{store?.area}}</tr>
-      <tr>{{store?.city}}, {{store?.street}} {{store?.number}}</tr>
-      <tr>{{store?.postalCode}}</tr>
-
-    </td>
+      <tbody>
+      <td>
+        <tr>NAZWA</tr>
+        <tr>POWIERZCHNIA</tr>
+        <tr>ADRES</tr>
+        <tr>KOD POCZTOWY</tr>
 
 
-    </tbody>
-  </table>
-</div>
+      </td>
+      <td>
+        <tr>{{store?.name}}</tr>
+        <tr>{{store?.area}}</tr>
+        <tr>{{store?.city}}, {{store?.street}} {{store?.number}}</tr>
+        <tr>{{store?.postalCode}}</tr>
+
+      </td>
+
+
+      </tbody>
+    </table>
+  </div>
   <div class="col-sm-6">
-    <p>AKTUALNIE WYBRANE GAMY PRODUKTÓW   <button (click)="editRange()"  class="btn btn-primary float-right">Edytuj</button></p>
+    <p>AKTUALNIE WYBRANE GAMY PRODUKTÓW
+      <button (click)="sendEditedRange()" class="btn btn-primary float-right">Edytuj</button>
+    </p>
     <table class="text-center" [class]="" class="cs-table table table-striped">
       <thead>
       <tr>
@@ -40,18 +44,20 @@
         <th>AGD</th>
         <th>RTV</th>
         <th>MAŁE AGD</th>
+        <th>ELEKTRONIKA</th>
         <th>KOMPUTERy</th>
       </tr>
       </thead>
       <tbody>
-      <tr class="row-car"  >
-        <td >{{store?.accesories}}</td>
-        <td >{{store?.drinks}}</td>
-        <td >{{store?.foods}}</td>
-        <td >{{store?.bigHouseHoldGoods}}</td>
-        <td >{{store?.rtv}}</td>
-        <td >{{store?.smallElectronics}}</td>
-        <td >{{store?.computers}}</td>
+      <tr class="row-car">
+        <td>{{store?.accesories}}</td>
+        <td>{{store?.drinks}}</td>
+        <td>{{store?.foods}}</td>
+        <td>{{store?.bigHouseHoldGoods}}</td>
+        <td>{{store?.rtv}}</td>
+        <td>{{store?.smallHouseHoldGoods}}</td>
+        <td>{{store?.smallElectronics}}</td>
+        <td>{{store?.computers}}</td>
       </tr>
       </tbody>
     </table>
@@ -62,58 +68,146 @@
 <div class="row">
   <div class="col-sm-4">
 
-  <p>UŻYTKOWNICY, AKTUALNIE SKLEP POSIADA: {{userList?.length}} UŻYTKOWNIKÓW   <button (click)="editUsers()"  class="btn btn-primary float-right">Zarządzaj</button></p>
-  <table [class]="" class="cs-table table table-striped">
+    <p>UŻYTKOWNICY, AKTUALNIE SKLEP POSIADA: {{userList?.length}} UŻYTKOWNIKÓW </p>
+    <table [class]="" class="cs-table table table-striped">
+      <thead>
+      <tr>
+        <th>IMIE</th>
+        <th>UPRAWNIENIA</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of userList;let i = index" class="row-car">
+        <td  (click)="editUser(i)">{{user?.login}}</td>
+        <td> {{user?.permission}}</td>
+
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div  class="col-sm-6">
+    <p>EDYCJA GAM PRODUKTÓW</p>
+    <table *ngIf="store?.id != null && user.permission === 'ADMIN';else noPermission" class="text-center" [class]="" class="cs-table table table-striped">
+      <thead>
+      <tr>
+        <th>AKCESORIA</th>
+        <th>NAPOJE</th>
+        <th>JEDZENIE</th>
+        <th>AGD</th>
+        <th>RTV</th>
+        <th>MAŁE AGD</th>
+        <th>ELEKTRONIKA</th>
+        <th>KOMPUTERy</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="row-car">
+        <td>
+          <ng-select
+            [placeholder]="store?.accesories"
+            [multiple]="false"
+            [options]="optionsRange"
+            [(ngModel)]="mySelectValueAccesories"></ng-select>
+        </td>
+        <td>
+          <ng-select
+            [placeholder]="store?.drinks"
+            [multiple]="false"
+            [options]="optionsRange"
+            [(ngModel)]="mySelectValueDrinks"></ng-select>
+        </td>
+        <td>
+          <ng-select
+            [placeholder]="store?.foods"
+            [multiple]="false"
+            [options]="optionsRange"
+            [(ngModel)]="mySelectValueFoods"></ng-select>
+        </td>
+        <td>
+          <ng-select
+            [placeholder]="store?.bigHouseHoldGoods"
+            [notFoundMsg]="store?.bigHouseHoldGoods"
+            [multiple]="false"
+            [options]="optionsRange"
+            [(ngModel)]="mySelectValueBHHG"></ng-select>
+        </td>
+        <td>
+          <ng-select
+            [placeholder]="store?.rtv"
+            [multiple]="false"
+            [options]="optionsRange"
+            [(ngModel)]="mySelectValueRTV"></ng-select>
+        </td>
+        <td>
+          <ng-select
+            [placeholder]="store?.smallHouseHoldGoods"
+            [multiple]="false"
+            [options]="optionsRange"
+            [(ngModel)]="mySelectValueSmallHG"></ng-select>
+        </td>
+        <td>
+        <ng-select
+          [placeholder]="store?.smallElectronics"
+          [multiple]="false"
+          [options]="optionsRange"
+          [(ngModel)]="mySelectValueSmallElectronics"></ng-select>
+      </td>
+        <td>
+          <ng-select
+            [placeholder]="store?.computers"
+            [multiple]="false"
+            [options]="optionsRange"
+            [(ngModel)]="mySelectValueComputers"></ng-select>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+<div class="col-sm-4">
+
+  <p>EDYCJA UŻYTKOWNIKA: {{userToEdit?.login}} </p>
+  <table *ngIf="userToEdit != null"  class="cs-table table table-striped">
     <thead>
     <tr>
-      <th>NAZWA</th>
+      <th>LOGIN</th>
+      <th>IMIE</th>
+      <th>NAZWISKO</th>
       <th>UPRAWNIENIA</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of userList;let i = index" class="row-car"  >
-      <td (click)="editUser(i)" >{{user?.login}}</td>
-      <td> {{user?.permission}}</td>
-
-
-
-
-
-
+    <tr class="row-car">
+      <td>{{userToEdit?.login}}</td>
+      <td> {{userToEdit?.userName}}</td>
+      <td> {{userToEdit?.userSurname}}</td>
+      <td>
+        <ng-select
+          [placeholder]="userToEdit?.permission"
+          [multiple]="false"
+          [options]="options"
+          [(ngModel)]="mySelectValue">
+        </ng-select>
+        <button button (click)="sendEditedUser(userToEdit?.login)" class="btn btn-primary float-right">Edytuj
+          Uprawnienia
+        </button>
+      </td>
     </tr>
     </tbody>
   </table>
-
-    <div class="col-sm-4">
-
-      <p>EDYCJA UŻYTKOWNIKA: {{userToEdit?.login}}   </p>
-      <table [class]="" class="cs-table table table-striped">
-        <thead>
-        <tr>
-          <th>LOGIN</th>
-          <th>IMIE</th>
-          <th>NAZWISKO</th>
-          <th>UPRAWNIENIA</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr  class="row-car"  >
-          <td >{{userToEdit?.login}}</td>
-          <td> {{userToEdit?.userName}}</td>
-          <td> {{userToEdit?.userSurname}}</td>
-          <td> <ng-select
-            [multiple]="false"
-            [options]="options"
-            [(ngModel)]="mySelectValue">
-          </ng-select> <button button (click)="sendEditedUser(userToEdit?.login)"  class="btn btn-primary float-right">Edytuj</button></td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-
-</div>
-<pre>{{mySelectValue}}{{userToEdit?.login}}</pre>
 </div>
 
 
 
+<ng-template #noUssers>
+  <p>NIE WYBRANO UŻYTKOWNIKA LUB NIE MASZ UPRAWNIEŃ</p>
+</ng-template>
+
+
+<ng-template #noPermission>
+  <p style="color: red">NIE MASZ UPRAWNIŃ</p>
+</ng-template>

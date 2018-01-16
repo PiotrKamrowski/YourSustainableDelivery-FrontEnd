@@ -8,6 +8,7 @@ import {LoginPageComponent} from './logging/login-page/login-page.component';
 import {OnlyLoggedInUsersGuard} from './logging/OnlyLoggedInUsersGuard';
 import {YourstoreComponent} from './store/yourstore/yourstore.component';
 import {EditUsersComponent} from './manager/edit-users/edit-users.component';
+import {StoreResolve} from './store/store-resolve.service';
 
 
 const APP_ROUTES: Route[] = [
@@ -22,6 +23,7 @@ const APP_ROUTES: Route[] = [
     canActivate: [OnlyLoggedInUsersGuard]},
   {path: 'login-page', component: <any>LoginPageComponent},
   {path: 'yourstore', component: <any>YourstoreComponent,
+    resolve: {store: StoreResolve },
     canActivate: [OnlyLoggedInUsersGuard]},
   {path: 'editusersStore', component: <any>EditUsersComponent,
     canActivate: [OnlyLoggedInUsersGuard]},

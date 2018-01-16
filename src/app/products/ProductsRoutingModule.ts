@@ -14,6 +14,11 @@ const PRODUCT_ROUTES: Route[] = [
     path: 'addSigle/:id',
     component: <any> ProductAddsingleComponent,
     resolve: {product: ProductResolve}
+  },
+  {
+    path: 'productsInStore/:id',
+    component: <any> ProductAddsingleComponent,
+    resolve: {product: ProductResolve}
   }
 
 

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {User} from '../products/models/User';
-import {SmallU} from '../products/models/SmallU';
+import {User} from './models/User';
+import {SmallU} from './models/SmallU';
 
 @Injectable()
 export class LoggingService {

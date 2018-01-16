@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductsService} from '../../products/products.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {SmallU} from '../../products/models/SmallU';
+import {SmallU} from '../models/SmallU';
 import {Session} from 'selenium-webdriver';
 import {Router} from '@angular/router';
 import {Md5} from 'ts-md5/dist/md5';

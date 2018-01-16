@@ -3,10 +3,10 @@ import {Observable} from 'rxjs/Observable';
 import {Product} from './models/Product';
 import {HttpClient} from '@angular/common/http';
 import {ProductInStore} from './models/ProductInStore';
-import {Order} from './models/Order';
-import {SmallU} from './models/SmallU';
-import {Store} from './models/Store';
-import {User} from './models/User';
+import {Order} from '../order/models/Order';
+import {SmallU} from '../logging/models/SmallU';
+import {Store} from '../store/models/Store';
+import {User} from '../logging/models/User';
 
 
 @Injectable()

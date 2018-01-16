@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {SmallU} from '../../products/models/SmallU';
+import {SmallU} from '../../logging/models/SmallU';
 
 @Component({
   selector: 'app-header',
