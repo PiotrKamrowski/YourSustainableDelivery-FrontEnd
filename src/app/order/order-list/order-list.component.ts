@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Order} from '../models/Order';
 import {OrderService} from '../order.service';
+import {SmallU} from '../../logging/models/SmallU';
 
 
 @Component({
@@ -12,13 +13,14 @@ export class OrderListComponent implements OnInit {
 
 
   orders: Order[];
+  user: SmallU;
 
 
   constructor(private orderService: OrderService) {
   }
 
   ngOnInit() {
-
+    this.user = JSON.parse(sessionStorage.getItem('user'));
     this.loadOrders();
 
   }
@@ -44,9 +46,6 @@ export class OrderListComponent implements OnInit {
 
     }
   }
-
-
-
 
 
   sortByQuanity(operator: number) {
@@ -75,7 +74,10 @@ export class OrderListComponent implements OnInit {
 
   loadOrders() {
 
-    this.orderService.getListOrders(1).subscribe((orders) => {
+
+
+
+    this.orderService.getListOrders(this.user.storeId).subscribe((orders) => {
 
       this.orders = orders;
 

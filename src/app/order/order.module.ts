@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {OrderListComponent} from './order-list/order-list.component';
 import {RouterModule} from '@angular/router';
 import {SharedModule} from '../shared-module/shared-module';
+import { OrderProductComponent } from './order-product/order-product.component';
 
 
 @NgModule({
@@ -12,10 +13,10 @@ import {SharedModule} from '../shared-module/shared-module';
     SharedModule,
   ],
 
-  exports: [OrderListComponent],
+  exports: [OrderListComponent, OrderProductComponent],
 
 
-  declarations: [OrderListComponent]
+  declarations: [OrderListComponent, OrderProductComponent]
 })
 export class OrderModule {
 }

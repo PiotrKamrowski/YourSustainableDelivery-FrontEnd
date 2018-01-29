@@ -24,5 +24,10 @@ export class OrderService {
     return this.httpClient.get<Order[]>(this.urlOrder + `/${idStore}`);
   }
 
+  public getListOrdersByItem(idStore: number, ean: number): Observable<Order[]> {
+
+    return this.httpClient.get<Order[]>(this.urlOrder + `/${idStore}` + `/${ean}`);
+  }
+
 
 }

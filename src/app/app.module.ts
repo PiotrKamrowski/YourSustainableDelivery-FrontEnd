@@ -21,6 +21,7 @@ import {ManagerModule} from './manager/manager.module';
 import {LoggingService} from './logging/logging.service';
 import {StoreService} from './store/store.service';
 import {OrderService} from './order/order.service';
+import {OrderRoutingModule} from './order/OrderRoutingModule';
 
 
 
@@ -38,6 +39,7 @@ import {OrderService} from './order/order.service';
     SharedModule,
     AppRoutingModule,
     ProductRoutingModule,
+    OrderRoutingModule,
     OrderModule,
     LoggingModule,
     StoreModule,

@@ -3,6 +3,7 @@ import {Product} from '../models/Product';
 import {ProductsService} from '../products.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,7 +17,7 @@ export class ProductDetailComponent implements OnInit {
   inStore: boolean;
 
 
-  constructor(private productsService: ProductsService, private route: ActivatedRoute, private router: Router) {
+  constructor(private productsService: ProductsService, private route: ActivatedRoute, private router: Router, private _location: Location) {
   }
 
   ngOnInit() {
@@ -40,13 +41,14 @@ export class ProductDetailComponent implements OnInit {
 
   do() {
 
-this.router.navigate(['addSigle/' + this.product.ean]);
+    this.router.navigate(['addSigle/' + this.product.ean]);
 
   }
 
   backToList() {
 
-    this.router.navigate(['productsList']);
+    this._location.back();
+    /*this.router.navigate(['productsList']);*/
   }
 
   loadIsInStore() {

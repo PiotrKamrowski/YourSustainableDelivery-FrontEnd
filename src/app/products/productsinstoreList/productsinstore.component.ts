@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductInStore} from '../models/ProductInStore';
 import {ProductsService} from '../products.service';
+import {SmallU} from '../../logging/models/SmallU';
 
 @Component({
   selector: 'app-productsinstore',
@@ -12,6 +13,7 @@ export class ProductsinstoreComponent implements OnInit {
   productsinStore: ProductInStore[];
   productsinStoreAll: ProductInStore[];
   productsinStoreByCategory: ProductInStore[];
+  user: SmallU;
 
   constructor(private productservice: ProductsService) {
   }
@@ -19,6 +21,10 @@ export class ProductsinstoreComponent implements OnInit {
   ngOnInit() {
 
     this.loadProducts();
+
+    this.user = this.user = JSON.parse(sessionStorage.getItem('user'));
+
+    console.log(this.user.storeId);
   }
 
 

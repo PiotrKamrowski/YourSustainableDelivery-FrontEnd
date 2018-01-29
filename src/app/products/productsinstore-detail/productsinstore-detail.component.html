@@ -1,3 +1,65 @@
 <app-header>
-  <p class="text-center" levels>SZCZEGÓŁY PRODUKTU</p>
+  <p class="text-center" levels>SZCZEGÓŁY PRODUKTU {{productInStore?.productDetail.name}}</p>
 </app-header>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <table   class="cs-table table table-striped">
+        <thead>
+        <tr>
+          <th>NAZWA</th>
+          <th>ILOŚĆ</th>
+          <th>ZAMÓW</th>
+          <th>W ZAMÓWIENIU</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td [routerLink]="['/product/'.concat(+productInStore?.id_item)]">{{productInStore?.productDetail.name}}</td>
+          <td>{{productInStore?.quanity}}</td>
+          <td>
+
+          <form [formGroup]="orderForm">
+
+              <div class="input-group">
+
+                <input formControlName="quanity" type="number" class="form-control" >
+                <span class="input-group-btn">
+
+                <button class="btn-primary btn" (click)="addOrder">OK</button></span>
+                <p *ngIf="!orderForm.get('quanity').valid && orderForm.get('quanity').dirty" class="error">Ilość większa od 0</p>
+                <p *ngIf="" class="error">ilość inna niż pakowana zawartość</p>
+              </div>
+          </form>
+
+
+
+
+
+
+          </td>
+          <td [routerLink]="['/order/'.concat(+user?.storeId+'/'+productInStore?.id_item)]">{{productInStore?.inOrders}}</td>
+        </tr>
+
+
+        </tbody>
+
+
+      </table>
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+
+
+</div>

@@ -33,7 +33,7 @@
         </tr>
         </thead>
         <tbody class="text-center">
-        <tr  *ngFor="let productInStore of productsinStore;let i = index"  class="row-car" [routerLink]="['/productsInStore/'.concat(user?.idStore), productInStore?.id_item]" >
+        <tr  *ngFor="let productInStore of productsinStore;let i = index"  class="row-car" [routerLink]="['/productsInStore/'.concat(user?.storeId), productInStore?.id_item]" >
           <td *ngIf="productInStore.block == false; else blockProduct" ><img src="../../../assets/ok.png"></td>
           <td >{{productInStore.id_item}}</td>
           <td>{{productInStore.productDetail.name}}</td>

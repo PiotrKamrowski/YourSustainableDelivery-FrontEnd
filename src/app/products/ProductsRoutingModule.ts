@@ -18,7 +18,7 @@ const PRODUCT_ROUTES: Route[] = [
     resolve: {product: ProductResolve}
   },
   {
-    path: 'productsInStore/:storeId/:id',
+    path: 'productsInStore/:storeId/:ean',
     component: <any> ProductsinstoreDetailComponent,
     resolve: {productInStore: ProductInStoreResolve}
   }

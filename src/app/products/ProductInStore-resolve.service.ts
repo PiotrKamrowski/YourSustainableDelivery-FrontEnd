@@ -15,7 +15,7 @@ export class ProductInStoreResolve implements Resolve<ProductInStore> {
 
 
   resolve(route: ActivatedRouteSnapshot) {
-    return this.productsservice.getProductInStore(this.user.storeId, route.params['id']);
+    return this.productsservice.getProductInStore(this.user.storeId, route.params['ean']);
   }
 
 

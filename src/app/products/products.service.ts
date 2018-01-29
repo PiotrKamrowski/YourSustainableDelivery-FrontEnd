@@ -53,6 +53,8 @@ export class ProductsService {
 
 
 
+
+
       public getProductInStore(storeid: number, id: number): Observable<ProductInStore> {
 
         return this.httpClient.get<ProductInStore>(this.urlProductInStore + `/${storeid}` + `/${id}`);
