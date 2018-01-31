@@ -4,6 +4,7 @@ import {OrderListComponent} from './order-list/order-list.component';
 import {RouterModule} from '@angular/router';
 import {SharedModule} from '../shared-module/shared-module';
 import { OrderProductComponent } from './order-product/order-product.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { OrderProductComponent } from './order-product/order-product.component';
   exports: [OrderListComponent, OrderProductComponent],
 
 
-  declarations: [OrderListComponent, OrderProductComponent]
+  declarations: [OrderListComponent, OrderProductComponent, OrderDetailComponent]
 })
 export class OrderModule {
 }

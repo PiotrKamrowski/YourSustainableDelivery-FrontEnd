@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ProductInStore} from '../models/ProductInStore';
 import {SmallU} from '../../logging/models/SmallU';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {OrderService} from '../../order/order.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-productsinstore-detail',
@@ -19,8 +21,8 @@ export class ProductsinstoreDetailComponent implements OnInit {
 
   ean = +this.route.snapshot.params['ean'];
 
-  constructor(private productService: ProductsService, private route: ActivatedRoute, private router: Router,
-              private formBuilder: FormBuilder) {
+  constructor(private productService: ProductsService, private orderService: OrderService, private route: ActivatedRoute, private router: Router,
+              private formBuilder: FormBuilder, private location: Location) {
   }
 
   ngOnInit() {
@@ -53,7 +55,15 @@ export class ProductsinstoreDetailComponent implements OnInit {
   }
 
 
-  addOrder()
+  addOrder() {
+
+    console.log('dziala')
+
+    this.orderService.addOrder(this.orderForm.value).subscribe(()=> {
+
+      this.location.back();
+    });
+  }
 
   LoadProductInStore() {
 

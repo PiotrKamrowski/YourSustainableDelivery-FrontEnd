@@ -29,7 +29,7 @@
                 <input formControlName="quanity" type="number" class="form-control" >
                 <span class="input-group-btn">
 
-                <button class="btn-primary btn" (click)="addOrder">OK</button></span>
+                <button class="btn-primary btn" (click)="addOrder()" >OK</button></span>
                 <p *ngIf="!orderForm.get('quanity').valid && orderForm.get('quanity').dirty" class="error">Ilość większa od 0</p>
                 <p *ngIf="" class="error">ilość inna niż pakowana zawartość</p>
               </div>

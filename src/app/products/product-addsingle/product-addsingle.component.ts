@@ -71,9 +71,9 @@ export class ProductAddsingleComponent implements OnInit {
 
   addOrder() {
 
-    console.log('here');
+
     this.orderService.addOrder(this.orderForm.value).subscribe((resp1) => {
-      console.log('here'  + resp1);
+
       this.productService.addProductInStore(this.productInStoreForm.value).subscribe((resp2) => {
 
       });
