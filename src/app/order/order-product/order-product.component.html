@@ -17,6 +17,7 @@
           <th>EAN</th>
           <th>ILOŚĆ</th>
           <th>DATA UTWORZENIA</th>
+          <th>UTWORZONY PRZEZ</th>
           <th>DOSTARCZONY</th>
         </tr>
         </thead>
@@ -26,6 +27,7 @@
           <td>{{order?.id_item}}</td>
           <td >{{order?.quanity}}</td>
           <td>{{order?.date}}</td>
+          <td>{{order?.created}}</td>
           <td *ngIf="order.delivered == true; else blockProduct" ><img src="../../../assets/ok.png"></td>
         </tr>
         </tbody>

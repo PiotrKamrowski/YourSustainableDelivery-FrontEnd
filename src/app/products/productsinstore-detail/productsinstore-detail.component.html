@@ -11,14 +11,17 @@
         <thead>
         <tr>
           <th>NAZWA</th>
+          <th>CENA</th>
           <th>ILOŚĆ</th>
           <th>ZAMÓW</th>
+          <th>MIN. EKSPOZYCJI</th>
           <th>W ZAMÓWIENIU</th>
         </tr>
         </thead>
         <tbody>
         <tr>
           <td [routerLink]="['/product/'.concat(+productInStore?.id_item)]">{{productInStore?.productDetail.name}}</td>
+          <td> {{productInStore?.price}} <button *ngIf="user?.permission==='FULL' || user?.permission==='ADMIN'" class="btn-primary btn" (click)="edit()" >EDYTUJ</button></td>
           <td>{{productInStore?.quanity}}</td>
           <td>
 
@@ -34,12 +37,8 @@
                 <p *ngIf="" class="error">ilość inna niż pakowana zawartość</p>
               </div>
           </form>
-
-
-
-
-
-
+          </td>
+          <td>{{productInStore?.inOrders}}
           </td>
           <td [routerLink]="['/order/'.concat(+user?.storeId+'/'+productInStore?.id_item)]">{{productInStore?.inOrders}}</td>
         </tr>

@@ -6,6 +6,7 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, Validator, Validat
 import {ProductInStore} from '../models/ProductInStore';
 import {ValidateOrder} from '../order.validator';
 import {OrderService} from '../../order/order.service';
+import {SmallU} from '../../logging/models/SmallU';
 
 @Component({
   selector: 'app-product-addsingle',
@@ -17,6 +18,7 @@ export class ProductAddsingleComponent implements OnInit {
   product: Product;
   orderForm: FormGroup;
   productInStoreForm: FormGroup;
+  user: SmallU;
 
 
   ean = +this.route.snapshot.params['ean'];
@@ -44,8 +46,11 @@ export class ProductAddsingleComponent implements OnInit {
 
         delivered: false,
 
-      }
-    );
+        created: this.user.login
+
+  }
+  )
+    ;
 
   }
 
@@ -87,6 +92,7 @@ export class ProductAddsingleComponent implements OnInit {
 
   ngOnInit() {
     this.loadProduct();
+    this.user = JSON.parse(sessionStorage.getItem('user'));
 
 
     // this.productInStoreForm = this.buildProductInStoreForm();

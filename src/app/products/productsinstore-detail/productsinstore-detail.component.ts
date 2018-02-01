@@ -17,6 +17,7 @@ export class ProductsinstoreDetailComponent implements OnInit {
   private user: SmallU;
   private productInStore: ProductInStore;
   orderForm: FormGroup;
+  private permission: boolean;
 
 
   ean = +this.route.snapshot.params['ean'];
@@ -49,6 +50,8 @@ export class ProductsinstoreDetailComponent implements OnInit {
 
         delivered: false,
 
+        created: this.user.login
+
       }
     );
 
@@ -57,9 +60,9 @@ export class ProductsinstoreDetailComponent implements OnInit {
 
   addOrder() {
 
-    console.log('dziala')
+    console.log('dziala');
 
-    this.orderService.addOrder(this.orderForm.value).subscribe(()=> {
+    this.orderService.addOrder(this.orderForm.value).subscribe(() => {
 
       this.location.back();
     });
@@ -80,5 +83,12 @@ export class ProductsinstoreDetailComponent implements OnInit {
 
   }
 
+
+  userPermission(): boolean {
+
+    return this.user.permission === 'USER';
+
+
+  }
 
 }
